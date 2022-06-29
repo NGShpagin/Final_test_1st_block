@@ -1,4 +1,23 @@
-﻿string[] CountArray(string[] array)
+﻿// Создание массива, путемм ввода каждого элемента массива с клавиатуры
+string[] CreateArray()
+{
+    string text = string.Empty;
+    int len = 0;
+    string[] myArray = new string[len];
+    while (true)
+    {
+        Console.WriteLine("Print element for massive: ");
+        text = Console.ReadLine();
+        if (text == "q") break;
+        len++;
+        Array.Resize(ref myArray, len);
+        myArray[len-1] = text;
+    }
+    return myArray;
+}
+
+// Выделение элементов, состоящие из менне 4 символов, из входного массива в новый массив
+string[] CountArray(string[] array)
 {
     int len = array.Length;
     string[] resultArray = new string[len];
@@ -15,8 +34,7 @@
     return resultArray;
 }
 
-
-
+// Печать входного массива
 string PrintArray(string[] array)
 {
     string txt = string.Empty;
@@ -27,7 +45,7 @@ string PrintArray(string[] array)
     return $"[{txt.Remove(txt.Length - 2, 2)}]";
 }
 
-string[] myArr = { "1234", "1567", "-2", "computer science" };
+string[] myArr = CreateArray();
 Console.WriteLine($"My array: {PrintArray(myArr)}");
 string[] resultArr = CountArray(myArr);
 Console.WriteLine($"My array: {PrintArray(resultArr)}");
